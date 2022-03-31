@@ -1,0 +1,26 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.4",
+    "nodemon": "^2.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukie-m/expressPractice.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yukie-m/expressPractice/issues"
+  },
+  "homepage": "https://github.com/yukie-m/expressPractice#readme",
+  "description": ""
+}
