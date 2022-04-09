@@ -16,7 +16,6 @@ const url = `mongodb+srv://${username}:${password}@mondayweekfour.6osbn.mongodb.
 
 mongoose.connect(url, {
   useNewUrlParser: true,
-
   useUnifiedTopology: true,
 });
 

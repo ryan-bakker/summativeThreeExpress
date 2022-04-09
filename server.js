@@ -1,26 +1,20 @@
 const express = require("express");
-
 const cors = require("cors");
-
 const Products = require("./models/products");
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// leave until later
-
 require("./connection");
-
 app.use(cors());
 
 // app to use api routes
-
 const router = express.Router();
 
 app.use("/api", router);
 
-////////////////////////ALL ROUTES
+// Routes
 
 router.get("/view-products", function (req, res) {
   Products.find().then((response) => {
@@ -28,19 +22,29 @@ router.get("/view-products", function (req, res) {
   });
 });
 
+// Get products
+
 router.get("/view-product-by-id/:id", function (req, res) {
   Products.findOne({ _id: req.params.id }).then((response) => {
     res.json(response);
   });
 });
 
+// Delete single product
+
 router.delete("/delete-product-by-id/:id", function (req, res) {
-  Products.deleteOne({ _id: req.params.id }).then((response) => {
-    res.json(response);
-  });
+  Products.deleteOne({ _id: req.params.id })
+    .then((response) => {
+      res.json(response);
+    })
+    .catch((err) => {
+      // if there was an error return it to the app/user
+      return res.json({ error: true, error_type: err });
+    });
 });
 
-// CREATE new product
+// Create new product
+
 router.post("/create-product", function (req, res) {
   var newProduct = new Products();
   var theFormData = req.body;
@@ -48,16 +52,26 @@ router.post("/create-product", function (req, res) {
 
   Object.assign(newProduct, theFormData);
 
-  newProduct.save().then((response) => {
-    return res.json(response);
-  });
+  newProduct
+    .save()
+    .then((response) => {
+      return res.json(response);
+    })
+    .catch((err) => {
+      // if there was an error return it to the app/user
+      return res.json({ error: true, error_type: err });
+    });
 });
 
-router.patch("/patch-product-by-id/:id", function (req, res) {
-  Products.patchOne({ _id: req.params.id }).then((response) => {
-    res.json(response);
-  });
-});
+// Edit single product (feature yet to function correctly)
+
+// router.patch("/patch-product-by-id/:id", function (req, res) {
+//   Products.patchOne({ _id: req.params.id }).then((response) => {
+//     res.json(response);
+//   });
+// });
+
+// Post comment for item
 
 // end CREATE new writer
 
