@@ -53,6 +53,12 @@ router.post("/create-product", function (req, res) {
   });
 });
 
+router.patch("/patch-product-by-id/:id", function (req, res) {
+  Products.patchOne({ _id: req.params.id }).then((response) => {
+    res.json(response);
+  });
+});
+
 // end CREATE new writer
 
 router.get("/view-product-by-firstname/:name", function (req, res) {
