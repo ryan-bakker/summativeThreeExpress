@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
+// product properties
+
 var ProductsSchema = new Schema({
   user: String,
   year: String,
@@ -14,11 +16,9 @@ var ProductsSchema = new Schema({
   transmission: String,
   features: String,
   description: String,
-  condition: String,
   thumb: String,
 });
 
-// singular capitalized name for the mongo collection - Products
 const Product = mongoose.model("Product", ProductsSchema);
 
 module.exports = Product;
