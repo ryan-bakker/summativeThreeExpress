@@ -20,7 +20,7 @@ mongoose.connect(url, {
 // console feedback
 
 mongoose.connection.on("connected", (err, res) => {
-  console.log("Success! Connected to MongoDB");
+  console.log("Connected to MongoDB");
 });
 
 mongoose.connection.on("error", (err) => {

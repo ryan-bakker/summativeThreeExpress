@@ -139,5 +139,5 @@ router.get("/*", (req, res) => {
 const PORT = 4000;
 
 app.listen(PORT, () => {
-  console.log(`Phew!, listening on port ${PORT}`);
+  console.log(`Port ${PORT} on standby`);
 });
