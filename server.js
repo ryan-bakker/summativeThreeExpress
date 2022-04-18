@@ -81,14 +81,6 @@ router.put("/update-product/:id", (req, res) => {
   });
 });
 
-router.get("/view-product-by-firstname/:name", function (req, res) {
-  // console.log(req.params.name);
-
-  Products.findOne({ firstname: req.params.name }).then((response) => {
-    res.json(response);
-  });
-});
-
 // Get comments
 
 router.get("/view-comment", function (req, res) {
